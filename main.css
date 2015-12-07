@@ -4,7 +4,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: "Helvetica Neue Light", Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   color: #FFF;
 }
 
@@ -15,13 +15,16 @@ body {
 }
 
 h1 {
-	font-size: 48px;
-	font-weight: lighter;
-	line-height: 20%;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 46px;
 }
 
 p {
+	margin-top: 2px;
+	margin-bottom: 12px;
 	font-size: 20px;
+	font-weight: bolder;
 }
 
 a {
