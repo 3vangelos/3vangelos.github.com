@@ -4,4 +4,22 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #FFF;
+}
+
+body {
+	position: absolute;
+	left: 100px;
+	bottom: 200px;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+.link {
+	position: relative;
+	height: 40px;
+	width: 40px;
 }
