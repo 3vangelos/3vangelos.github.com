@@ -10,17 +10,28 @@ html {
 
 body {
 	position: absolute;
-	left: 100px;
-	bottom: 100px;
+	left: 140px;
+	bottom: 140px;
 }
 
 h1 {
 	font-size: 40px;
-	line-height: 40%;
+	font-weight: lighter;
+	line-height: 1%;
 }
 
 p {
 	font-size: 18px;
+}
+
+a {
+	color: #349C4A;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #349C4A;
+	text-decoration: none;
 }
 
 .link {
