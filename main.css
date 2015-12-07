@@ -15,13 +15,13 @@ body {
 }
 
 h1 {
-	font-size: 40px;
+	font-size: 48px;
 	font-weight: lighter;
-	line-height: 1%;
+	line-height: 20%;
 }
 
 p {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 a {
@@ -37,6 +37,6 @@ a:visited {
 .link {
 	position: relative;
 	padding-right: 10px;
-	height: 35px;
-	width: 35px;
+	height: 40px;
+	width: 40px;
 }
