@@ -1,2 +1,2 @@
 # 3vangelos.github.com
-Personal Website 3vangelos.github.io
+Personal Website http://3vangelos.github.io
