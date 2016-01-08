@@ -1,7 +1,7 @@
 html { 
-  background: url(bg.jpg) no-repeat center center fixed; 
+  background-color: white;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  color: #FFF;
+  color: #000;
 }
 
 body {
