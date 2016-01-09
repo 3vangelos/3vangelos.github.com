@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Environments in XCode</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://www.xxosx.com/blog/xcode/2016/01/07/environments_in_xcode.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">xxOSX</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Environments in XCode</h1>
+    <p class="post-meta">Jan 7, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p>A while ago <a href="http://futurice.com">Futurice</a> published a <a href="http://futurice.com/blog/five-environments-you-cannot-develop-without">blog post</a> on how import it is to consider different environments when developing.</p>
+
+<p>Take a moment to think which environments are important for you when your are building your iOS app. Having to continouusly improve apps with a huge amount of daily users and high QA standards which have to be met as soon as an app is released to a testing team, I experienced that the least amount of environments you want to have is three:</p>
+
+<ul>
+  <li>
+    <p><strong>develop</strong> is the environment you are developing with. Probably you want your app to poing to a local server running on your computer. Maybe you want the app to extensively log information you consider valuable and not throw any analytics data to remote servers.</p>
+  </li>
+  <li>
+    <p><strong>test</strong> is the version you want to give to your Q&amp;A team. Now your app is pointing to a remote server, where you store all the test data. You are probably also interested in some kind of analytics your app is already generating during the test phase. Thouhg you don’t want to mix this data with the data of your live version.</p>
+  </li>
+  <li>
+    <p><strong>release</strong> is the version you will release to the app store. This app is pointing to your  production server.</p>
+  </li>
+</ul>
+
+<p>Depending on the app you are building these environments can be configured to your specific needs. Maybe you want to have some mechanism on develop so you don’t have to login constantly in order to save time during development. Another interesting point for you to consider a test and a release version is, that you don’t want your test users to mess up their core data of their app, when they install a new test version on their phone. Well, I think you get the point.</p>
+
+<p>Setting up your environment with the according build schemes early on during the development phase will save you time later on. Here is one way to setup your environments in XCode:</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>First of all you have to create a configuration for each environment you want. By default XCode already has Test and Release when you start a project. In the example below I added one for Test.</p>
+
+<p><img src="/blog/assets/configs.png" alt="image" /></p>
+
+<p>In order to have all environments installed simultaneously on your device you need one provisioning profile with a separate App ID for each. After you have created those in the apple developer portal, setup the product bundle identifier for each configuration, in order XCode to be able to setup and sign your app accordingly.</p>
+
+<p><img src="/blog/assets/bundleIds.png" alt="image" /></p>
+
+<p>The final step in order to have you app running in the different environments and in order to be able to switch quickly between those, create a scheme for every environment:</p>
+
+<p><img src="/blog/assets/schemes.png" alt="image" /></p>
+
+<p>and make sure your schemes are pointing to the right configuration:</p>
+
+<p><img src="/blog/assets/scheme.png" alt="image" /></p>
+
+<p>That’s basically it, now you have three schemes of your app and you can have all of them installed on your device in parallel with slightly different configurations and their very own core data stack.</p>
+
+<h2 id="customisation">Customisation</h2>
+
+<p>Now you can customise the app  the way you want.</p>
+
+<h3 id="macros">Macros</h3>
+
+<p>You can create macros for the different configurations in order to adjust the behaviour of the app for the different environemts:</p>
+
+<p><img src="/blog/assets/macros.png" alt="image" /></p>
+
+<p>Then you can use thos macros as follows in your code:</p>
+
+<pre><code>#ifdef CONFIGURATION_DEUBUG
+// Do some debug stuff, e.g. login user automatically
+#endif
+</code></pre>
+
+<h3 id="appicon">AppIcon</h3>
+
+<p>You can have a separate icon for every environment, so you don’t get confused during developing and testing. To do so, create an app icon in your assets folders for every environment:</p>
+
+<p><img src="/blog/assets/appicons.png" alt="image" /></p>
+
+<p>and set the according configuration to use the right icon:</p>
+
+<p><img src="/blog/assets/icons.png" alt="image" /></p>
+
+<h3 id="custom-variables">Custom Variables</h3>
+
+<p>You can have custom variables, representing different values for the different environment. Create a User-Defined Settings in your Build Settings:</p>
+
+<p><img src="/blog/assets/BASE_URLS.png" alt="image" /></p>
+
+<p>Setup a variable in your info.plist to point to the specific user-defined setting:</p>
+
+<p><img src="/blog/assets/baseURLs.png" alt="image" /></p>
+
+<p>And then you can use it as follows inside your application:</p>
+
+<p><code>[[[NSBundle mainBundle] infoDictionary] valueForKey:@"baseURL"];</code></p>
+
+<p>There is other things you can customize like the name of the app, etc. The described setup helped me a lot having a clean separation between developing new feature and fixing bugs in release.</p>
+
+<p>Do you think I am missing something or a way to do it even better? Please, let me know!</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+        Any questions or comments? Write to <a href="mailto:evangelos@posteo.eu">evangelos@posteo.eu</a>.
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

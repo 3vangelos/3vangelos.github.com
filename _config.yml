@@ -1,0 +1,11 @@
+# Site settings
+title: xxOSX
+email: evangelos@posteo.eu
+description: 
+baseurl: ""
+url: "http://xxosx.com"
+twitter_username: 3vangelos
+github_username:  3vangelos
+
+# Build settings
+markdown: kramdown
