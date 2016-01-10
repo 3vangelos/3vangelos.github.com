@@ -9,8 +9,8 @@
     <title>Environments in XCode</title>
     <meta name="description" content="">
 
-    <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://www.xxosx.com/blog/xcode/2016/01/07/environments_in_xcode.html">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://xxosx.com/xcode/2016/01/07/environments_in_xcode.html">
 </head>
 
 
@@ -20,7 +20,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/blog/">xxOSX</a>
+    <a class="site-title" href="/">xxOSX</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -55,7 +55,7 @@
   </header>
 
   <article class="post-content">
-    <p>A while ago <a href="http://futurice.com">Futurice</a> published a <a href="http://futurice.com/blog/five-environments-you-cannot-develop-without">blog post</a> on how import it is to consider different environments when developing.</p>
+    <p>A while ago <a href="http://futurice.com">Futurice</a> published a <a href="http://futurice.com/blog/assets/five-environments-you-cannot-develop-without">blog post</a> on how import it is to consider different environments when developing.</p>
 
 <p>Take a moment to think which environments are important for you when your are building your iOS app. Having to continouusly improve apps with a huge amount of daily users and high QA standards which have to be met as soon as an app is released to a testing team, I experienced that the least amount of environments you want to have is three:</p>
 
@@ -79,19 +79,19 @@
 
 <p>First of all you have to create a configuration for each environment you want. By default XCode already has Test and Release when you start a project. In the example below I added one for Test.</p>
 
-<p><img src="/blog/assets/configs.png" alt="image" /></p>
+<p><img src="/assets/configs.png" alt="image" /></p>
 
 <p>In order to have all environments installed simultaneously on your device you need one provisioning profile with a separate App ID for each. After you have created those in the apple developer portal, setup the product bundle identifier for each configuration, in order XCode to be able to setup and sign your app accordingly.</p>
 
-<p><img src="/blog/assets/bundleIds.png" alt="image" /></p>
+<p><img src="/assets/bundleIds.png" alt="image" /></p>
 
 <p>The final step in order to have you app running in the different environments and in order to be able to switch quickly between those, create a scheme for every environment:</p>
 
-<p><img src="/blog/assets/schemes.png" alt="image" /></p>
+<p><img src="/assets/schemes.png" alt="image" /></p>
 
 <p>and make sure your schemes are pointing to the right configuration:</p>
 
-<p><img src="/blog/assets/scheme.png" alt="image" /></p>
+<p><img src="/assets/scheme.png" alt="image" /></p>
 
 <p>That’s basically it, now you have three schemes of your app and you can have all of them installed on your device in parallel with slightly different configurations and their very own core data stack.</p>
 
@@ -103,7 +103,7 @@
 
 <p>You can create macros for the different configurations in order to adjust the behaviour of the app for the different environemts:</p>
 
-<p><img src="/blog/assets/macros.png" alt="image" /></p>
+<p><img src="/assets/macros.png" alt="image" /></p>
 
 <p>Then you can use thos macros as follows in your code:</p>
 
@@ -116,21 +116,21 @@
 
 <p>You can have a separate icon for every environment, so you don’t get confused during developing and testing. To do so, create an app icon in your assets folders for every environment:</p>
 
-<p><img src="/blog/assets/appicons.png" alt="image" /></p>
+<p><img src="/assets/appicons.png" alt="image" /></p>
 
 <p>and set the according configuration to use the right icon:</p>
 
-<p><img src="/blog/assets/icons.png" alt="image" /></p>
+<p><img src="/assets/icons.png" alt="image" /></p>
 
 <h3 id="custom-variables">Custom Variables</h3>
 
 <p>You can have custom variables, representing different values for the different environment. Create a User-Defined Settings in your Build Settings:</p>
 
-<p><img src="/blog/assets/BASE_URLS.png" alt="image" /></p>
+<p><img src="/assets/BASE_URLS.png" alt="image" /></p>
 
 <p>Setup a variable in your info.plist to point to the specific user-defined setting:</p>
 
-<p><img src="/blog/assets/baseURLs.png" alt="image" /></p>
+<p><img src="/assets/baseURLs.png" alt="image" /></p>
 
 <p>And then you can use it as follows inside your application:</p>
 

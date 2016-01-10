@@ -20,7 +20,7 @@ Depending on the app you are building these environments can be configured to yo
 
 Setting up your environment with the according build schemes early on during the development phase will save you time later on. Here is one way to setup your environments in XCode:
 
-[blog-post]: http://futurice.com/blog/five-environments-you-cannot-develop-without
+[blog-post]: http://futurice.com/blog/assets/five-environments-you-cannot-develop-without
 
 [futurice]: http://futurice.com
 
@@ -28,19 +28,19 @@ Setting up your environment with the according build schemes early on during the
 
 First of all you have to create a configuration for each environment you want. By default XCode already has Test and Release when you start a project. In the example below I added one for Test.
 
-![image](/blog/assets/configs.png)
+![image](/assets/configs.png)
 
 In order to have all environments installed simultaneously on your device you need one provisioning profile with a separate App ID for each. After you have created those in the apple developer portal, setup the product bundle identifier for each configuration, in order XCode to be able to setup and sign your app accordingly.	
 
-![image](/blog/assets/bundleIds.png)
+![image](/assets/bundleIds.png)
 
 The final step in order to have you app running in the different environments and in order to be able to switch quickly between those, create a scheme for every environment:
 
-![image](/blog/assets/schemes.png)
+![image](/assets/schemes.png)
 
 and make sure your schemes are pointing to the right configuration: 
 
-![image](/blog/assets/scheme.png)
+![image](/assets/scheme.png)
 
 That's basically it, now you have three schemes of your app and you can have all of them installed on your device in parallel with slightly different configurations and their very own core data stack.
 
@@ -53,7 +53,7 @@ Now you can customise the app  the way you want.
 
 You can create macros for the different configurations in order to adjust the behaviour of the app for the different environemts:
 
-![image](/blog/assets/macros.png)
+![image](/assets/macros.png)
 
 Then you can use thos macros as follows in your code:
 
@@ -65,21 +65,21 @@ Then you can use thos macros as follows in your code:
 
 You can have a separate icon for every environment, so you don't get confused during developing and testing. To do so, create an app icon in your assets folders for every environment:
 
-![image](/blog/assets/appicons.png)
+![image](/assets/appicons.png)
 
  and set the according configuration to use the right icon:
  
-![image](/blog/assets/icons.png)
+![image](/assets/icons.png)
 
 ###Custom Variables
 
 You can have custom variables, representing different values for the different environment. Create a User-Defined Settings in your Build Settings:
 
-![image](/blog/assets/BASE_URLS.png)
+![image](/assets/BASE_URLS.png)
 
 Setup a variable in your info.plist to point to the specific user-defined setting:
 
-![image](/blog/assets/baseURLs.png)
+![image](/assets/baseURLs.png)
 
 And then you can use it as follows inside your application:
 
