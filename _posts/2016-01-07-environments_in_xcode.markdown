@@ -38,7 +38,7 @@ The final step in order to have your app running in the different environments a
 
 ![image](/assets/schemes.png)
 
-and make sure your schemes are pointing to the right configuration. You can configure the settings of a scheme, by selecting a scheme in the "Manage Schemes..." window (see above) and clicking "Edit...": 
+and make sure your schemes are pointing to the right configuration. You can configure the settings of a scheme, by selecting a scheme in the "Manage Schemes..." window (see above) and clicking the "Edit..." button: 
 
 ![image](/assets/scheme.png)
 
