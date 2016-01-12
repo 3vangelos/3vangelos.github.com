@@ -57,14 +57,14 @@
   <article class="post-content">
     <p>A while ago <a href="http://futurice.com">Futurice</a> published a <a href="http://futurice.com/blog/assets/five-environments-you-cannot-develop-without">blog post</a> on how import it is to consider different environments when developing.</p>
 
-<p>Take a moment to think which environments are important for you when your are building your iOS app. Having to continouusly improve apps with a huge amount of daily users and high QA standards which have to be met as soon as an app is released to a testing team, I experienced that the least amount of environments you want to have is three:</p>
+<p>Take a moment to think which environments are important for you when your are building your iOS app. Having to continously improve apps with a huge amount of daily users and high QA standards which have to be met as soon as an app is released to a testing team, I experienced that the least amount of environments you want to have is three:</p>
 
 <ul>
   <li>
-    <p><strong>develop</strong> is the environment you are developing with. Probably you want your app to poing to a local server running on your computer. Maybe you want the app to extensively log information you consider valuable and not throw any analytics data to remote servers.</p>
+    <p><strong>develop</strong> is the environment you are developing with. Probably you want your app to point to a local server running on your computer. Maybe you want the app to extensively log information you consider valuable and not throw any analytics data to remote servers.</p>
   </li>
   <li>
-    <p><strong>test</strong> is the version you want to give to your Q&amp;A team. Now your app is pointing to a remote server, where you store all the test data. You are probably also interested in some kind of analytics your app is already generating during the test phase. Thouhg you don’t want to mix this data with the data of your live version.</p>
+    <p><strong>test</strong> is the version you want to give to your Q&amp;A team. Now your app is pointing to a remote server, where you store all the test data. You are probably also interested in some kind of analytics your app is already generating during the test phase. Though you don’t want to mix this data with the data of your live version.</p>
   </li>
   <li>
     <p><strong>release</strong> is the version you will release to the app store. This app is pointing to your  production server.</p>
@@ -77,7 +77,7 @@
 
 <h2 id="configuration">Configuration</h2>
 
-<p>First of all you have to create a configuration for each environment you want. By default XCode already has Test and Release when you start a project. In the example below I added one for Test.</p>
+<p>First of all you have to create a configuration for each environment you want. By default XCode already has Debug and Release when you start a project. In the example below I added one for Test.</p>
 
 <p><img src="/assets/configs.png" alt="image" /></p>
 
@@ -85,11 +85,11 @@
 
 <p><img src="/assets/bundleIds.png" alt="image" /></p>
 
-<p>The final step in order to have you app running in the different environments and in order to be able to switch quickly between those, create a scheme for every environment:</p>
+<p>The final step in order to have your app running in the different environments and in order to be able to switch quickly between those, create a scheme for every environment. There are different ways to create a new scheme. Here is one: Go to Product -&gt; Scheme -&gt; Manage Schemes… Here you can select one of your existing schemes and duplicate it by tapping the settings button right to the plus and minus buttons:</p>
 
 <p><img src="/assets/schemes.png" alt="image" /></p>
 
-<p>and make sure your schemes are pointing to the right configuration:</p>
+<p>and make sure your schemes are pointing to the right configuration. You can configure the settings of a scheme, by selecting a scheme in the “Manage Schemes…” window (see above) and clicking “Edit…”:</p>
 
 <p><img src="/assets/scheme.png" alt="image" /></p>
 
@@ -105,9 +105,9 @@
 
 <p><img src="/assets/macros.png" alt="image" /></p>
 
-<p>Then you can use thos macros as follows in your code:</p>
+<p>Then you can use these macros as follows in your code:</p>
 
-<pre><code>#ifdef CONFIGURATION_DEUBUG
+<pre><code>#ifdef CONFIGURATION_Debug
 // Do some debug stuff, e.g. login user automatically
 #endif
 </code></pre>
@@ -124,11 +124,11 @@
 
 <h3 id="custom-variables">Custom Variables</h3>
 
-<p>You can have custom variables, representing different values for the different environment. Create a User-Defined Settings in your Build Settings:</p>
+<p>You can have custom variables, representing different values for the different environments. Create a User-Defined Setting in your Build Settings. As an example I created a custom variable called BASE_URL which represents the url of the backend:</p>
 
 <p><img src="/assets/BASE_URLS.png" alt="image" /></p>
 
-<p>Setup a variable in your info.plist to point to the specific user-defined setting:</p>
+<p>In order to be able to use the variable in your code you have to setup another variable in your info.plist to point to the specific user-defined setting:</p>
 
 <p><img src="/assets/baseURLs.png" alt="image" /></p>
 
@@ -136,7 +136,7 @@
 
 <p><code>[[[NSBundle mainBundle] infoDictionary] valueForKey:@"baseURL"];</code></p>
 
-<p>There is other things you can customize like the name of the app, etc. The described setup helped me a lot having a clean separation between developing new feature and fixing bugs in release.</p>
+<p>There are other things you can customize like the name of the app, etc. The described setup helped me a lot having a clean separation between developing new feature and fixing bugs in release.</p>
 
 <p>Do you think I am missing something or a way to do it even better? Please, let me know!</p>
 
